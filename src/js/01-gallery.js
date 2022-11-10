@@ -9,6 +9,7 @@ const getImageCollection = () => {
   const container = galleryItems.map(itemSimpleLightbox);
   galleryEl.insertAdjacentHTML('afterbegin', container.join(''));
 };
+
 getImageCollection();
 
 let lightbox = new SimpleLightbox('.gallery a', {

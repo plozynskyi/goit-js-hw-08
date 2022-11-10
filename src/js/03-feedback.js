@@ -12,19 +12,11 @@ refs.form.addEventListener('submit', onFormSubmit);
 const STORAGE_INPUT_KEY = 'feedback-form-state';
 
 function onInput(e) {
-  // let userDetails = JSON.parse(localStorage.getItem(STORAGE_INPUT_KEY)) || {};
-  // userDetails[e.target.name] = e.target.value;
-
   let userDetails = JSON.parse(localStorage.getItem(STORAGE_INPUT_KEY)) || {};
+
   userDetails[e.target.name] = e.target.value;
 
   localStorage.setItem(STORAGE_INPUT_KEY, JSON.stringify(userDetails));
-}
-
-function onFormSubmit(e) {
-  e.preventDefault();
-  e.currentTarget.reset();
-  localStorage.removeItem(STORAGE_INPUT_KEY);
 }
 
 const saveLocalItems = localStorage.getItem(STORAGE_INPUT_KEY);
@@ -41,4 +33,22 @@ function getLocalStorageItems() {
   }
 }
 
+function onFormSubmit(e) {
+  e.preventDefault();
+  const {
+    elements: { email, message },
+  } = e.currentTarget;
+
+  let formElDetails = { email: email.value, message: message.value };
+  console.log(formElDetails);
+
+  e.currentTarget.reset();
+
+  removeStorageItems();
+}
+
 getLocalStorageItems();
+
+function removeStorageItems() {
+  localStorage.removeItem(STORAGE_INPUT_KEY);
+}
