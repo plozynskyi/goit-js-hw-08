@@ -10,9 +10,9 @@ const currentTime = localStorage.getItem(STORAGE_TIME_KEY)
   ? localStorage.getItem(STORAGE_TIME_KEY)
   : 0;
 
-getCurrentTime = e => {
+function getCurrentTime() {
   localStorage.setItem(STORAGE_TIME_KEY, e.seconds);
-};
+}
 
 player.setCurrentTime(currentTime);
 
