@@ -41,6 +41,10 @@ function onFormSubmit(e) {
     elements: { email, message },
   } = e.currentTarget;
 
+  if (email.value === '' || message.value === '') {
+    return alert('Введіть всі поля форми!!!');
+  }
+
   const formElDetails = { email: email.value, message: message.value };
   console.log(formElDetails);
 
