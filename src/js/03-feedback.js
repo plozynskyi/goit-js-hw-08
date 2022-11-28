@@ -13,7 +13,7 @@ const STORAGE_INPUT_KEY = 'feedback-form-state';
 
 function onInput(e) {
   const userDetails = JSON.parse(localStorage.getItem(STORAGE_INPUT_KEY)) || {};
-
+  console.log(userDetails);
   userDetails[e.target.name] = e.target.value;
 
   localStorage.setItem(STORAGE_INPUT_KEY, JSON.stringify(userDetails));
@@ -37,6 +37,7 @@ getLocalStorageItems();
 
 function onFormSubmit(e) {
   e.preventDefault();
+
   const {
     elements: { email, message },
   } = e.currentTarget;
